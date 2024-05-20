@@ -1,4 +1,4 @@
-resource "aws_default_route_table" "example" {
+resource "aws_default_route_table" "public_route_table" {
   default_route_table_id = aws_vpc.example.default_route_table_id
 
   route {
@@ -12,6 +12,6 @@ resource "aws_default_route_table" "example" {
   }
 
   tags = {
-    Name = "example"
+    Name = "public route table"
   }
 }
