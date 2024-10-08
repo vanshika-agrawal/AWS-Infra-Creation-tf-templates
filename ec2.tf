@@ -1,8 +1,8 @@
 resource "aws_instance" "ec2_ecs_cluster"{
-instance_type = 
+instance_type = "t3a.small"
 subnet_id= aws_subnet.private_subnet_1.id
-availability_zone= 
-key_name = 
+availability_zone= "us-west-2a"
+key_name = "deployer_key"
 user_data= <<-EOF
     #!/bin/bash
     echo ECS_CLUSTER=${aws_ecs_cluster.cluster.name} >> /etc/ecs/ecs.config
@@ -14,10 +14,11 @@ tags = {
     name = ECS-EC2 instance
 }
 }
-resource "aws_security_group" "ecs_sg"{
-name = "aws_ecs_sg"
-vpc_id = aws_default_vpc.main.id
-tags ={
-    Name = AWS ecs sg
+
+resource "tls_private_key" "tls_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
-}
+resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  }
