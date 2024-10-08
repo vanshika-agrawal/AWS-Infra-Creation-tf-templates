@@ -2,7 +2,7 @@ resource "aws_security_group" "ecs_sg"{
 name = "aws_ecs_sg"
 vpc_id = aws_default_vpc.main.id
 tags ={
-    Name = AWS ecs sg
+    Name = "AWS-ecs-sg"
 }
 resource "aws_vpc_security_group_ingress_rule" "inbound_sg_http" {
   security_group_id = aws_security_group.ecs_sg.id

@@ -32,7 +32,7 @@ data "aws_egress_only_internet_gateway" "default_eig" {
   }
 }
 resource "aws_route_table" "private_route_table" {
-  vpc_id = aws_vpc..id
+  vpc_id = aws_vpc.main.id
 
   route {
     cidr_block = "10.0.1.0/24"

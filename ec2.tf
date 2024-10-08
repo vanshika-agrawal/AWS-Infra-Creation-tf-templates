@@ -11,7 +11,7 @@ user_data= <<-EOF
 iam_instance_profile = aws_iam_instance_profile.ecs_instance_profile.name
 security_groups = [aws_security_group.ecs_sg.id]
 tags = {
-    name = ECS-EC2 instance
+    name = "ECS-EC2-instance"
 }
 }
 
