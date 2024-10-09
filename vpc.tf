@@ -1,7 +1,6 @@
-resource "aws_default_vpc" "main" {
-  tags = {
-    Name = "Default VPC"
-  }
+variable "vpc_id" {}
+data "aws_vpc" "default_vpc" {
+  id = var.vpc_id
 }
 #Public Subnets for AZ - 2a, 2b, 2c
 resource "aws_default_subnet" "public_subnet_1" {
