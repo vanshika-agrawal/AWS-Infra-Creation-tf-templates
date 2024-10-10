@@ -5,7 +5,7 @@ availability_zone= "us-west-2a"
 key_name = "deployer_key"
 user_data= <<-EOF
     #!/bin/bash
-    echo ECS_CLUSTER=${aws_ecs_cluster.cluster.name} >> /etc/ecs/ecs.config
+    echo ECS_CLUSTER=${aws_ecs_cluster.pseudo_cluster.name} >> /etc/ecs/ecs.config
   EOF
 
 iam_instance_profile = aws_iam_instance_profile.ecs_instance_profile.name

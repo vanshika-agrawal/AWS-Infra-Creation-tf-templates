@@ -1,13 +1,13 @@
 variable taskcount{}
-resource "aws_ecs_service" "demo_service" {
-  name            = "Sample Service"
+resource "aws_ecs_service" "pseudo_service" {
+  name            = "Pseudo Service"
   launch_type = "EC2"
-  cluster         = aws_ecs_cluster.test_cluster.id
-  task_definition = aws_ecs_task_definition.demo_task.arn
+  cluster         = aws_ecs_cluster.pseudo_cluster.id
+  task_definition = aws_ecs_task_definition.pseudo_task.arn
   desired_count   = var.taskcount
   force_new_deployment = true
-  #iam_role        = aws_iam_role.foo.arn
-  #depends_on      = [aws_iam_role_policy.foo]
+  iam_role        = aws_iam_role.ecs_instance_role.arn
+  depends_on      = [aws_iam_role_policy.ecs_instance_policy.id]
 
   ordered_placement_strategy {
     type  = "binpack"

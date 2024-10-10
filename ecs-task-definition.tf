@@ -1,5 +1,5 @@
-resource "aws_ecs_task_definition" "demo_task" {
-  family = "Sample service"
+resource "aws_ecs_task_definition" "pseudo_task" {
+  family = "pseudo service"
   container_definitions = jsonencode([
     {
       name      = "first"

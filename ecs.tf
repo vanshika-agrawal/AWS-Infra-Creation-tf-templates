@@ -1,4 +1,4 @@
-resource "aws_ecs_cluster" "test_cluster" {
+resource "aws_ecs_cluster" "pseudo_cluster" {
   name = "example"
   tags =
   {
